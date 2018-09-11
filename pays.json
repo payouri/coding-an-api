@@ -1,0 +1,32 @@
+{
+    "Pays" : [
+        {
+            "id": "FR",
+            "capitale": "Paris",
+            "nom": "France",
+            "zone": "Europe",
+            "langue": "Français"
+        },
+        {
+            "id": "IT",
+            "capitale": "Rome",
+            "nom": "Italie",
+            "zone": "Europe",
+            "langue": "Italien"
+        },
+        {
+            "id": "BE",
+            "capitale": "Bruxelles",
+            "nom": "Belgique",
+            "zone": "Europe",
+            "langue": "Multiples"
+        },
+        {
+            "id": "BR",
+            "capitale": "Brasilia",
+            "nom": "Brésil",
+            "zone": "Amérique du Sud",
+            "langue": "Portugais"
+        }
+    ]
+}

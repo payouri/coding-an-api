@@ -1,0 +1,37 @@
+{
+  "name": "myfirstexpressapi",
+  "version": "0.1.0",
+  "description": "simple express api",
+  "main": "logicApi.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "file-type": "^9.0.0",
+    "helmet": "^3.13.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.6",
+    "multer": "^1.3.1",
+    "passport": "^0.4.0"
+  },
+  "jshintConfig": {
+    "esversion": 6
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "eslint": "^4.19.1",
+    "jshint": "^2.9.6",
+    "webpack": "^4.18.0"
+  },
+  "scripts": {
+    "start": "nodemon logicApi.js"
+  },
+  "author": "Pa Youri",
+  "license": "MIT"
+}
