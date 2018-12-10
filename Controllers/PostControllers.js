@@ -1,7 +1,7 @@
 const Post = require(global.appRoot + '/Models/Post');
 
 const Controllers = {
-    getAllPosts: (req, res) => {
+    getAllPosts: (req, res, next) => {
 
         Post.find({/* No Special Filter */}, ['title', 'smallDesc', 'body', 'status', 'cover', 'createdAt', 'id'], { sort:{
             createdAt: -1 //Sort by Date Added DESC
@@ -23,7 +23,7 @@ const Controllers = {
             Post.findOne({
                 id: req.params.post_id
             }, (err, post) => {
-                if (err) res.status(500).json({ err });
+                if (err) return res.status(500).json({ err });
                 return res.status(200).json( post );
             });
         }else {

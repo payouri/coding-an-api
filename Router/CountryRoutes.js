@@ -1,20 +1,15 @@
-const express = require('express');
+const AbstractRoute = require('./Route');
 
-module.exports = (function() {
+const routes = [
+    {method: 'delete', path: '/country_id', controller: 'deleteCountry', auth: true},
+    {method: 'get', path: '/', controller: 'getAllCountries'},
+    {method: 'get', path: '/:country_id', controller: 'getCountryById'},
+    {method: 'post', path: '/:country_id', controller: 'addNewCountry', auth: true},
+    {method: 'put', path: '/:country_id', controller: 'updateCountry', auth: true},
+]
 
-    'use strict';
-
-    const CountryControllers = require( global.appRoot + '/Controllers/CountryControllers' );
-
-    const router = express.Router();
-
-    router
-        .get('/', CountryControllers.getAllCountries)
-        .get('/:country_id', CountryControllers.getCountryById)
-        .post('/', CountryControllers.addNewCountry)
-        .put('/:country_id', CountryControllers.updateCountry)
-        .delete('/:country_id', CountryControllers.deleteCountry);
-
-    return router;    
-
-})();
+module.exports = class CountryRoute extends AbstractRoute {
+    constructor() {
+        super(routes);
+    }
+}

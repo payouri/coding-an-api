@@ -1,21 +1,35 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+    { Schema } = mongoose;
 
-const userSchema = mongoose.Schema({
+const userSchema = Schema({
     userName: {
         type: String,
-        required: true
+        required: true,
+        index: true,
+        unique: true,
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
     accountType: {
         type: String,
-        required: true
+        required: true,
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: new Date,
+    },
+    role: {
+        type: Schema.Types.ObjectId,
+        ref: 'Role',
+        required: true,
     },
 });
 

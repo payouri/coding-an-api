@@ -1,21 +1,15 @@
-const express = require('express');
+const AbstractRoute = require('./Route');
 
-module.exports = (function () {
+const routes = [
+    {method: 'delete', path: '/user_id', controller: 'deleteUser'},
+    {method: 'get', path: '/', controller: 'getAllUsers'},
+    {method: 'get', path: '/:user_id', controller: 'getUserByName'},
+    {method: 'post', path: '/', controller: 'registerUser'},
+    {method: 'put', path: '/:user_id', controller: 'updateUser'},
+]
 
-    'use strict';
-
-    const UserControllers = require(global.appRoot + '/Controllers/UserControllers'),
-        AuthControllers = require(global.appRoot + '/Controllers/AuthControllers');
-
-    const router = express.Router();
-
-    router
-        .get('/', AuthControllers.authUser, UserControllers.getAllUsers)
-        .get('/:user_name', UserControllers.getUserByName);
-    // .post('/', UserControllers.registerUser)
-    // .put('/:user_id', UserControllers.updateUser)
-    // .delete('/:user_id', UserControllers.deleteUser);
-
-    return router;
-
-})();
+module.exports = class UserRoute extends AbstractRoute {
+    constructor() {
+        super(routes);
+    }
+}

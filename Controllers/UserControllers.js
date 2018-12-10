@@ -1,4 +1,6 @@
-const User = require(global.appRoot + '/Models/User');
+const User = require(global.appRoot + '/Models/User'),
+    Role = require(global.appRoot + '/Models/Role'),
+    { ObjectID } = require('mongoose');
 
 const Controllers = {
 
@@ -30,6 +32,33 @@ const Controllers = {
                 });
             }
         });
+    },
+
+    createUser: (req, res) => {
+        if (req && req.body &&
+            req.body.userName &&
+            req.body.password &&
+            req.body.accountType &&
+            req.body.email
+        ) {
+            let user = new User({
+                userName: userName,
+                password: '',
+                email: '',
+                role: Role.find({label: 'member'}, (err, role) => role._id),
+            });          
+            user.save(err => {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).json({
+                        err
+                    });
+                }
+                return res.status(200).json({
+                    message: `Bravo, l'utilisateur: ${user.email}, est maintenant stockée en base de données`
+                });
+            });
+        }
     }
 };
 

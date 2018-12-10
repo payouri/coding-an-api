@@ -1,21 +1,12 @@
-const express = require('express');
+const AbstractRoute = require('./Route');
 
-module.exports = (function () {
+const routes = [
+    {method: 'post', path: '/signin', controller: 'signInUser'},
+    {method: 'post', path: '/:signup', controller: 'signUpUser'},
+]
 
-    'use strict';
-
-    const AuthControllers = require(global.appRoot + '/Controllers/AuthControllers');
-
-    const router = express.Router();
-
-    router
-        .post('/register', AuthControllers.registerUser)
-        .post('/login', AuthControllers.loginUser)
-        .post('/auth', AuthControllers.authUser);
-    // .post('/', AuthControllers.registerUser)
-    // .put('/:user_id', AuthControllers.updateUser)
-    // .delete('/:user_id', AuthControllers.deleteUser);
-
-    return router;
-
-})();
+module.exports = class AuthRoute extends AbstractRoute {
+    constructor() {
+        super(routes);
+    }
+}

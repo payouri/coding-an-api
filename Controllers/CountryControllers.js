@@ -3,7 +3,7 @@ const Country = require(global.appRoot + '/Models/Country');
 const Controllers = {
 
     getAllCountries: (req, res) => {
-
+        console.log('aaa');
         Country.find((err, countries) => {
             if (err) {
                 res.status(500).json({

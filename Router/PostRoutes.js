@@ -1,20 +1,15 @@
-const express = require('express');
+const AbstractRoute = require('./Route');
 
-module.exports = (function() {
+const routes = [
+    {method: 'delete', path: '/post_id', controller: 'deletePost', auth: true},
+    {method: 'get', path: '/', controller: 'getAllPosts'},
+    {method: 'get', path: '/:post_id', controller: 'getPostById', auth: true},
+    {method: 'post', path: '/:post_id', controller: 'createPost', auth: true},
+    {method: 'put', path: '/:post_id', controller: 'updatePost', auth: true},
+]
 
-    'use strict';
-
-    const PostControllers = require( global.appRoot + '/Controllers/PostControllers' );
-
-    const router = express.Router();
-
-    router
-        .get('/', PostControllers.getAllPosts)
-        .get('/:post_id', PostControllers.getPostById)
-        .post('/', PostControllers.createPost)
-        .put('/:post_id', PostControllers.updatePost)
-        .delete('/:post_id', PostControllers.deletePost);
-
-    return router;    
-
-})();
+module.exports = class PostRoute extends AbstractRoute {
+    constructor() {
+        super(routes);
+    }
+}
